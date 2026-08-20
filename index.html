@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum Solar — Bankable solar proposals. Coming soon.</title>
+<meta name="description" content="Solar proposals a lender can bank on. Measured roofs, real utility data, math sealed under a cryptographic fingerprint. Launching soon — get early access.">
+<meta property="og:title" content="Quantum Solar — coming soon">
+<meta property="og:description" content="Solar proposals a lender can bank on. Get early access.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quantumsolar.ai/">
+<meta name="theme-color" content="#0A0F1A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%23E8A93C'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%230A0F1A'/%3E%3C/svg%3E">
+
+<!-- ═══════════════ TRACKING (STEP 1): Google Analytics 4 ═══════════════
+     Create a GA4 property for quantumsolar.ai at analytics.google.com,
+     then replace G-PLACEHOLDER below (both occurrences) with your
+     Measurement ID. Until then this no-ops harmlessly. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER');
+</script>
+
+<style>
+  :root {
+    --bg: #0A0F1A;
+    --bg-lift: #0E1522;
+    --card: rgba(18, 26, 42, 0.88);
+    --ink: #EDE7D8;
+    --soft: #B9B09C;
+    --muted: #7E796B;
+    --gold: #E8A93C;
+    --gold-deep: #C9860E;
+    --gold-glow: rgba(232, 169, 60, 0.32);
+    --line: rgba(232, 169, 60, 0.14);
+    --line-strong: rgba(232, 169, 60, 0.30);
+    --pass: #55C98A;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+  }
+  /* ── the dawn: fixed horizon glow ── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(1100px 460px at 72% 96%, rgba(232,169,60,0.16), transparent 65%),
+      radial-gradient(700px 300px at 72% 100%, rgba(201,134,14,0.20), transparent 60%),
+      radial-gradient(1400px 900px at 15% -10%, rgba(30,45,75,0.55), transparent 60%);
+    z-index: 0;
+  }
+  /* faint blueprint grid */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(232,169,60,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,169,60,0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(900px 700px at 70% 80%, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(900px 700px at 70% 80%, black, transparent 75%);
+    z-index: 0;
+  }
+
+  .strip {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+    color: var(--gold); opacity: .5; white-space: nowrap; overflow: hidden;
+    user-select: none; padding: 6px 24px; position: relative; z-index: 2;
+  }
+  .strip.top { border-bottom: 1px solid var(--line); }
+  .strip.bot { border-top: 1px solid var(--line); }
+
+  main {
+    flex: 1; width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+    gap: 60px; align-items: center; position: relative; z-index: 1;
+  }
+  .wordmark {
+    font-family: var(--mono); font-weight: 700; font-size: 14px;
+    letter-spacing: 5px; text-transform: uppercase; margin: 44px 0 0;
+    color: var(--ink);
+  }
+  .wordmark .q { color: var(--gold); text-shadow: 0 0 18px var(--gold-glow); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold); margin: 30px 0 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); opacity: .6; }
+  .eyebrow .pulse {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+    box-shadow: 0 0 0 0 var(--gold-glow); animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--gold-glow); }
+    70% { box-shadow: 0 0 0 9px rgba(232,169,60,0); }
+    100% { box-shadow: 0 0 0 0 rgba(232,169,60,0); }
+  }
+  h1 {
+    font-size: clamp(2.3rem, 4.8vw, 3.5rem); line-height: 1.1; font-weight: 600;
+    letter-spacing: -.012em; margin: 0 0 20px; text-wrap: balance;
+  }
+  h1 em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--gold) 20%, #F6D48A 50%, var(--gold-deep) 80%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede { font-size: 1.13rem; color: var(--soft); max-width: 32em; margin: 0 0 32px; }
+  .lede strong { color: var(--ink); }
+
+  form { display: grid; gap: 10px; max-width: 440px; }
+  .row { display: flex; gap: 10px; }
+  input[type=email] {
+    flex: 1; font-family: var(--mono); font-size: 14px; color: var(--ink);
+    background: var(--bg-lift); border: 1px solid var(--line-strong);
+    border-radius: 4px; padding: 14px 15px; min-width: 0;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  input[type=email]::placeholder { color: var(--muted); }
+  input[type=email]:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,169,60,.15); }
+  select {
+    font-family: var(--mono); font-size: 13px; color: var(--soft);
+    background: var(--bg-lift); border: 1px solid var(--line);
+    border-radius: 4px; padding: 12px 10px;
+  }
+  select:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  button {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 700;
+    background: linear-gradient(180deg, #F0B44A, var(--gold-deep));
+    color: #141006; border: 1px solid var(--gold-deep); border-radius: 4px;
+    padding: 14px 24px; cursor: pointer;
+    box-shadow: 0 4px 22px -6px var(--gold-glow);
+    transition: transform .12s ease, box-shadow .15s ease;
+  }
+  button:hover { transform: translateY(-1px); box-shadow: 0 8px 30px -6px var(--gold-glow); }
+  button:active { transform: translateY(0); }
+  button:disabled { opacity: .6; cursor: wait; transform: none; }
+  button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .form-note { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .5px; }
+  .form-msg { font-family: var(--mono); font-size: 12.5px; padding: 10px 12px; border-radius: 4px; display: none; }
+  .form-msg.ok { display: block; color: var(--pass); border: 1px dashed rgba(85,201,138,.5); background: rgba(85,201,138,.06); }
+  .form-msg.err { display: block; color: var(--gold); border: 1px dashed var(--line-strong); background: rgba(232,169,60,.05); }
+  .form-msg a { color: var(--gold); }
+
+  .points { margin: 30px 0 44px; padding: 0; list-style: none; display: grid; gap: 11px; max-width: 34em; }
+  .points li { padding-left: 1.4em; position: relative; color: var(--soft); font-size: .99rem; }
+  .points li::before { content: "—"; position: absolute; left: 0; color: var(--gold); }
+  .points b { color: var(--ink); }
+
+  /* ── specimen column with rising sun ── */
+  .peek { position: relative; margin: 40px 0; }
+  .sun {
+    position: absolute; left: 50%; top: 50%; width: 340px; height: 340px;
+    transform: translate(-50%, -44%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 42%, rgba(246,212,138,.24), rgba(232,169,60,.10) 45%, transparent 70%);
+    filter: blur(2px);
+    z-index: 0;
+    animation: sunrise 2.8s cubic-bezier(.22,.8,.35,1) both;
+  }
+  .sun::after {
+    content: ""; position: absolute; inset: 26%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 38%, rgba(246,212,138,.5), rgba(201,134,14,.24) 55%, transparent 75%);
+    filter: blur(6px);
+  }
+  @keyframes sunrise {
+    from { transform: translate(-50%, -20%); opacity: 0; }
+    to   { transform: translate(-50%, -44%); opacity: 1; }
+  }
+  .specimen {
+    position: relative; z-index: 1;
+    background: var(--card);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    box-shadow: 0 30px 70px -30px rgba(0,0,0,.8), 0 0 60px -20px var(--gold-glow);
+    padding: 22px 22px 18px;
+    font-family: var(--mono); font-size: 12px;
+    animation: cardin 1.2s cubic-bezier(.22,.8,.35,1) both;
+  }
+  @keyframes cardin { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .specimen::before {
+    content: "SNEAK PEEK"; position: absolute; top: 11px; right: 15px;
+    font-size: 9px; letter-spacing: 3px; color: var(--gold); opacity: .75;
+  }
+  .spec-head { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 11px; margin-bottom: 13px; }
+  .spec-head .addr { font-weight: 700; color: var(--ink); }
+  .spec-head .id { color: var(--muted); font-size: 10px; }
+  .spec-rows { display: grid; gap: 8px; margin-bottom: 13px; }
+  .spec-row { display: flex; justify-content: space-between; gap: 12px; }
+  .spec-row .k { color: var(--muted); }
+  .spec-row .v { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .spec-row .v.blur { filter: blur(5px); user-select: none; }
+  .gates { display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 11px; margin-bottom: 13px; }
+  .gate { display: flex; justify-content: space-between; gap: 12px; }
+  .gate .g { color: var(--soft); }
+  .gate .s { color: var(--muted); transition: color .3s ease; }
+  .gate.ok .s { color: var(--pass); font-weight: 700; text-shadow: 0 0 12px rgba(85,201,138,.4); }
+  .hashline {
+    border: 1px dashed var(--line-strong); border-radius: 4px;
+    padding: 9px 11px; color: var(--gold); font-size: 10.5px;
+    overflow-wrap: anywhere; line-height: 1.55;
+    background: linear-gradient(100deg, transparent 30%, rgba(246,212,138,.08) 50%, transparent 70%);
+    background-size: 220% 100%;
+    animation: shimmer 5s linear infinite;
+  }
+  @keyframes shimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+  .hashline .lbl { color: var(--muted); display: block; font-size: 9px; letter-spacing: 2px; margin-bottom: 3px; }
+
+  footer { text-align: center; padding: 18px 24px 8px; position: relative; z-index: 1; }
+  .fine { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .5px; }
+  .fine a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; gap: 6px; padding-bottom: 34px; }
+    .peek { margin: 16px 0 8px; }
+    .sun { width: 270px; height: 270px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="strip top" aria-hidden="true" id="stripTop"></div>
+
+<main>
+  <div>
+    <p class="wordmark"><span class="q">Quantum</span> Solar</p>
+    <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Coming soon · quantumsolar.ai</p>
+    <h1>Solar proposals a lender can <em>bank on</em>.</h1>
+    <p class="lede">
+      Roofs measured from aerial LiDAR. Savings computed against the homeowner's
+      <strong>actual utility data</strong>. Every number sealed under a cryptographic
+      fingerprint any lender can re-verify. <strong>We're opening soon</strong> —
+      leave your email for early access.
+    </p>
+
+    <!-- ═══════ LEAD CAPTURE: Netlify Forms (native — nothing to configure) ═══════
+         Netlify detects this form at deploy time. Submissions appear under
+         Site → Forms in the Netlify dashboard; enable email notifications
+         there (Forms → Notifications) to get each signup in your inbox. -->
+    <form id="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="waitlist">
+      <p style="display:none" aria-hidden="true"><label>Leave this empty: <input name="bot-field"></label></p>
+      <div class="row">
+        <input type="email" name="email" required placeholder="you@company.com" aria-label="Email address">
+        <button type="submit" id="joinBtn">Get early access</button>
+      </div>
+      <select name="role" aria-label="I am a...">
+        <option value="installer">I'm a solar installer</option>
+        <option value="lender">I'm a lender / capital partner</option>
+        <option value="homeowner">I'm a homeowner</option>
+        <option value="other">Something else</option>
+      </select>
+      <p class="form-msg" id="formMsg" role="status"></p>
+      <p class="form-note">No spam. One email when we open the doors.</p>
+    </form>
+
+    <ul class="points">
+      <li><b>Measured, not sketched</b> — roof geometry from aerial LiDAR with hard validation gates.</li>
+      <li><b>Real usage, real rates</b> — the homeowner's actual hourly usage and verified utility tariffs.</li>
+      <li><b>Sealed at signing</b> — change one digit and the fingerprint breaks. Lenders can re-run the math.</li>
+    </ul>
+  </div>
+
+  <div class="peek">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="specimen" aria-label="Preview of a verified proposal record">
+      <div class="spec-head">
+        <span class="addr">1 · 5 · ▓▓▓▓▓▓▓▓ DR</span>
+        <span class="id">PROPOSAL №&nbsp;QS-····</span>
+      </div>
+      <div class="spec-rows">
+        <div class="spec-row"><span class="k">System size</span><span class="v blur">11.4 kW · 28 modules</span></div>
+        <div class="spec-row"><span class="k">Year-1 production</span><span class="v blur">16,180 kWh</span></div>
+        <div class="spec-row"><span class="k">Roof source</span><span class="v">Aerial LiDAR, measured</span></div>
+        <div class="spec-row"><span class="k">Usage source</span><span class="v">Verified utility data</span></div>
+      </div>
+      <div class="gates" id="gates">
+        <div class="gate"><span class="g">Roof geometry</span><span class="s">—</span></div>
+        <div class="gate"><span class="g">Usage data</span><span class="s">—</span></div>
+        <div class="gate"><span class="g">Production math</span><span class="s">—</span></div>
+        <div class="gate"><span class="g">Seal integrity</span><span class="s">—</span></div>
+      </div>
+      <div class="hashline">
+        <span class="lbl">Sealed at signing · SHA-256</span>
+        <span>9f31c6aa04d8e57b2210fe8d4c6a9b03d1774e5f80c2ab6913d0e4f7a25c88b1</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="fine">© 2026 Quantum Solar · <a href="mailto:hello@quantumsolar.ai">hello@quantumsolar.ai</a></p>
+</footer>
+<div class="strip bot" aria-hidden="true" id="stripBot"></div>
+
+<script>
+  (function () {
+    // banknote hash strips
+    var HEX = "0123456789abcdef";
+    function hashChars(n) { var s=""; for (var i=0;i<n;i++){ s+=HEX[(Math.random()*16)|0]; if(i%8===7)s+=" "; } return s; }
+    var t=document.getElementById("stripTop"), b=document.getElementById("stripBot");
+    if(t)t.textContent=hashChars(240); if(b)b.textContent=hashChars(240);
+
+    // gates animate to PASS after the sun rises
+    var gates=document.querySelectorAll("#gates .gate");
+    var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var i=0;
+    function next(){ if(i>=gates.length)return;
+      gates[i].classList.add("ok"); gates[i].querySelector(".s").textContent="PASS";
+      i++; setTimeout(next, reduced?0:420); }
+    setTimeout(next, reduced?0:1600);
+
+    // waitlist submit via fetch (stays on page), GA event + graceful failure
+    var form=document.getElementById("waitlist"), msg=document.getElementById("formMsg"),
+        btn=document.getElementById("joinBtn");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email=form.email.value.trim();
+      if(!email || email.indexOf("@")<1){ msg.className="form-msg err";
+        msg.textContent="Please enter a valid email address."; return; }
+      btn.disabled=true;
+      fetch("/", { method:"POST",
+        headers:{ "Content-Type":"application/x-www-form-urlencoded" },
+        body:new URLSearchParams(new FormData(form)).toString() })
+        .then(function (r) {
+          if (r.ok) {
+            msg.className="form-msg ok";
+            msg.textContent="You're on the list. We'll be in touch soon.";
+            form.reset();
+            if (typeof gtag==="function") gtag("event","waitlist_signup",{ role:form.role.value });
+          } else { throw new Error("bad status "+r.status); }
+        })
+        .catch(function () {
+          msg.className="form-msg err";
+          msg.innerHTML="Something hiccuped — email us instead: <a href='mailto:hello@quantumsolar.ai?subject=Early%20access'>hello@quantumsolar.ai</a>";
+        })
+        .finally(function(){ btn.disabled=false; });
+    });
+  })();
+</script>
+</body>
+</html>
